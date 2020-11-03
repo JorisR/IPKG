@@ -37,11 +37,5 @@ namespace IPKG.Infrastructure.Ef
             modelBuilder.ApplyConfiguration(new RouteConfiguration());
         }
 
-
-
-        public async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default(CancellationToken))
-        {
-            return await base.SaveChangesAsync(cancellationToken);
-        }
     }
 }
