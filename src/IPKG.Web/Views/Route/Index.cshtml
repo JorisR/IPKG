@@ -1,0 +1,60 @@
+﻿@model IPKG.Web.Models.Routes
+@{
+    Layout = "~/_Layout.cshtml";
+}
+
+@Html.ActionLink("New Route", "Create")
+<h2>Routes</h2>
+
+<div class="col-12 border p-3 mt-3">
+    <form method="post">
+        @if (Model.RouteList.Any())
+        {
+            <table class="table table-striped border">
+
+                <tr class="table-secondary">
+                    <th>
+                        <label>From</label>
+                    </th>
+                    <th>
+                        <label>To</label>
+                    </th>
+                    <th>
+                        <label>Distance</label>
+                    </th>
+                    <th>
+                        <label>Total consumption</label>
+                    </th>
+                    <th>
+
+                    </th>
+                </tr>
+                @foreach (var item in Model.RouteList)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(m => item.DepartureParkingName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(m => item.DestinationParkingName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(m => item.Distance)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(m => item.TotalFuelConsumption)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { reference = item.Reference })
+                        </td>
+                    </tr>
+                }
+            </table>
+        }
+        else
+        {
+            <p>No routes Available.</p>
+        }
+    </form>
+</div>
+

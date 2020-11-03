@@ -1,0 +1,42 @@
+﻿@model IPKG.Web.Models.UpdateCreateRoute
+@{
+    Layout = "~/_Layout.cshtml";
+}
+@if (Model.Reference == Guid.Empty)
+{
+    <h2>Create new route</h2>
+}
+else
+{
+    <h2>Update route : @Model.Reference</h2>
+}
+
+@using (Html.BeginForm())
+{
+    <div class="container">
+
+        <div class="row">
+            <div class="col-sm">From:</div>
+            <div class="col-sm">
+                @Html.DropDownListFor(model => model.DepartureParking, new SelectList(ViewBag.CarParks, "Reference", "Name"), new {@class = "form-control"})
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm">To:</div>
+            <div class="col-sm">
+                @Html.DropDownListFor(model => model.DestinationParking, new SelectList(ViewBag.CarParks, "Reference", "Name"), new {@class = "form-control"})
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm">Average consumption (l/100km) :</div>
+            <div class="col-sm">
+                @Html.TextBoxFor(x=> x.AverageFuelConsumption)
+            </div>
+        </div>
+
+    </div>
+    <input type="submit" value="Save" class="btn btn-default" />
+    }
+
+
+    @Html.ActionLink("Back to List", "Index")
