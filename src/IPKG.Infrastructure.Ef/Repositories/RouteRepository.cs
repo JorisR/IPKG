@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using IPKG.Application.Services.Repositories;
 using IPKG.Domain;
+using Microsoft.EntityFrameworkCore;
 
 namespace IPKG.Infrastructure.Ef.Repositories
 {
@@ -20,7 +21,7 @@ namespace IPKG.Infrastructure.Ef.Repositories
 
         public async Task<IEnumerable<Route>> GetAllRoutes()
         {
-            return await Task.FromResult(_context.Routes);
+            return  await _context.Routes.ToListAsync(); 
         }
 
         public Task<Route> AddRoute(Route route)
@@ -31,7 +32,7 @@ namespace IPKG.Infrastructure.Ef.Repositories
 
         public async Task<Route> GetByReference(Guid reference)
         {
-            return await Task.FromResult(_context.Routes.FirstOrDefault(x => x.Reference == reference));
+            return await _context.Routes.FirstOrDefaultAsync(x => x.Reference == reference);
         }
     }
 }

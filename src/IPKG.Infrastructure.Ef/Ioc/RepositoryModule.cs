@@ -12,7 +12,6 @@ namespace IPKG.Infrastructure.Ef.Ioc
         protected override void Load(ContainerBuilder builder)
         {
             builder.RegisterType<RouteRepository>().As<IRouteRepository>();
-            builder.RegisterType<DatabaseContext>().As<DatabaseContext>().SingleInstance();
         }
     }
 }

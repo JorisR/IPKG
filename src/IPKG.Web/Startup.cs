@@ -6,6 +6,7 @@ using Autofac;
 using Autofac.Extensions.DependencyInjection;
 using IPKG.Application.Services.Ioc;
 using IPKG.Infrastructure.Ef.Ioc;
+using IPKG.Web.Config;
 using IPKG.Web.Ioc;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -43,6 +44,12 @@ namespace IPKG.Web
             // Create a container-builder and register dependencies
             var builder = new ContainerBuilder();
 
+            var configuration = new ConfigurationBuilder()
+                .AddJsonFile("appsettings.json")
+                .AddJsonFile("appsettings.Development.json", true)
+                .Build();
+
+            var webConfig = configuration.Get<WebConfiguration>();
             // Populate the service-descriptors added to `IServiceCollection`
             // BEFORE you add things to Autofac so that the Autofac
             // registrations can override stuff in the `IServiceCollection`
@@ -51,7 +58,7 @@ namespace IPKG.Web
 
             // Register your own things directly with Autofac
             builder.RegisterServices();
-            builder.RegisterEf();
+            builder.RegisterEf(webConfig.Data.ConnectionStrings.First().Connection);
             builder.RegisterModule<AutoMapperModule>();
             AutofacContainer = builder.Build();
 
