@@ -30,7 +30,7 @@ else
         <div class="row">
             <div class="col-xs-4">Average consumption (l/100km) :</div>
             <div class="col-xs-4">
-                @Html.TextBoxFor(x=> x.AverageFuelConsumption, new {@class = "form-control"})
+                @Html.TextBoxFor(x=> x.AverageFuelConsumption, new { @class = "form-control", required="required"})
             </div>
         </div>
 
