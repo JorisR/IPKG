@@ -70,7 +70,15 @@ namespace IPKG.Web
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
 
-          app.UseDeveloperExceptionPage();
+            if (env.IsDevelopment())
+            {
+                app.UseDeveloperExceptionPage();
+            }
+            else
+            {
+                app.UseExceptionHandler("/Route/Error");
+                app.UseHsts();
+            }
 
 
             app.UseHttpsRedirection();

@@ -13,24 +13,24 @@ else
 
 @using (Html.BeginForm())
 {
-    <div class="container">
+    <div class="container-fluid">
 
         <div class="row">
-            <div class="col-sm">From:</div>
-            <div class="col-sm">
+            <div class="col-xs-4">From:</div>
+            <div class="col-xs-4">
                 @Html.DropDownListFor(model => model.DepartureParking, new SelectList(ViewBag.CarParks, "Reference", "Name"), new {@class = "form-control"})
             </div>
         </div>
         <div class="row">
-            <div class="col-sm">To:</div>
-            <div class="col-sm">
+            <div class="col-xs-4">To:</div>
+            <div class="col-xs-4">
                 @Html.DropDownListFor(model => model.DestinationParking, new SelectList(ViewBag.CarParks, "Reference", "Name"), new {@class = "form-control"})
             </div>
         </div>
         <div class="row">
-            <div class="col-sm">Average consumption (l/100km) :</div>
-            <div class="col-sm">
-                @Html.TextBoxFor(x=> x.AverageFuelConsumption)
+            <div class="col-xs-4">Average consumption (l/100km) :</div>
+            <div class="col-xs-4">
+                @Html.TextBoxFor(x=> x.AverageFuelConsumption, new {@class = "form-control"})
             </div>
         </div>
 

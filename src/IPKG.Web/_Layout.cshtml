@@ -4,8 +4,12 @@
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
     @RenderSection("head", false)
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link href="~/Styles/root.css" rel="stylesheet" />
+
+    
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="~/css/root.css" />
+
+
 </head>  
 <body>  
 
@@ -14,6 +18,15 @@
 @RenderBody()  
 <br />  
 
+<script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.2.0.min.js"
+        asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
+        asp-fallback-test="window.jQuery">
+</script>
+<script src="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.6/bootstrap.min.js"
+        asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
+        asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal">
+</script>
+<script src="~/js/site.min.js" asp-append-version="true"></script>
 
 </body>  
 </html>
